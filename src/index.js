@@ -35,15 +35,23 @@ const MINUS_CNT = "MINUS";
 
 // 1. reducer를 만들어준다.
 const countModifier = (cnt = 0, action) => {
-    if(action.type === ADD_CNT) {
-        return cnt + 1;
+    switch (action.type) {
+        case ADD_CNT:
+            return cnt + 1;
+        case MINUS_CNT:
+            return cnt - 1;
+        default:
+            return cnt;
     }
-    else if(action.type === MINUS_CNT) {
-        return cnt - 1;
-    }
-    else {
-        return cnt;
-    }
+    // if(action.type === ADD_CNT) {
+    //     return cnt + 1;
+    // }
+    // else if(action.type === MINUS_CNT) {
+    //     return cnt - 1;
+    // }
+    // else {
+    //     return cnt;
+    // }
 };
 // 2. store를 만들어준다.
 // 3. store에 reducer를 넣어준다.
