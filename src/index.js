@@ -29,12 +29,16 @@ const number = document.querySelector('span');
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // redux를 활용한 count 기능 구현
+
+const ADD_CNT = "ADD";
+const MINUS_CNT = "MINUS";
+
 // 1. reducer를 만들어준다.
 const countModifier = (cnt = 0, action) => {
-    if(action.type === 'ADD') {
+    if(action.type === ADD_CNT) {
         return cnt + 1;
     }
-    else if(action.type === 'MINUS') {
+    else if(action.type === MINUS_CNT) {
         return cnt - 1;
     }
     else {
@@ -46,8 +50,8 @@ const countModifier = (cnt = 0, action) => {
 const countStore = legacy_createStore(countModifier);
 
 // store에 변화를 일으키는 방법은 dispatch를 통해서만 가능하다.
-add.addEventListener('click', () => countStore.dispatch({type: 'ADD'}));
-minus.addEventListener('click', () => countStore.dispatch({type: 'MINUS'}));
+add.addEventListener('click', () => countStore.dispatch({type: ADD_CNT}));
+minus.addEventListener('click', () => countStore.dispatch({type: MINUS_CNT}));
 
 // 4. store에 변화가 있을 때마다 실행할 함수를 만들어준다.
 const onChange = () => {
